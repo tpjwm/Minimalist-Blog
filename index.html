@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tailwind Starter Template - Minimalist Blog: Tailwind Toolbox</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
+    <title>Dimitar's Blog: A Tale of Whimsy, Puzzles, Suffering, and Romance</title>
+    <meta name="description" content="Dimitar Pendurkov's Blog. Word document template text replacement.">
+    <meta name="keywords" content="Word Documents docx template replacement rsid RSID">
+    <meta name="author" content="Dimitar 'Danger' Pendurkov">
 
     <!-- Font Awesome if you need it
 	  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
@@ -81,31 +81,197 @@
 
         <div class="w-full md:w-1/2 md:pr-32 order-3 md:order-1">
             <div class="max-w-md md:float-right md:text-right leading-loose tracking-tight md:sticky md:top-0 ">
-                <p class="font-bold my-4 md:my-12">Previous Posts</p>
+                <p class="font-bold my-4 md:my-12">Previous Posts (N/A)</p>
 
-                <ul class="flex flex-wrap justify-between flex-col">
+                <!-- <ul class="flex flex-wrap justify-between flex-col">
                     <li><a href="#" class="nav">Previous blog posts links</a></li>
                     <li><a href="#" class="nav">A diam sollicitudin tempor id eue</a></li>
                     <li><a href="#" class="nav">Lectus vestibulum mattis ullamcorper velit sed ullamcorper</a></li>
                     <li><a href="#" class="nav">Pulvinar etiam non quam lacus suspendisse faucibus</a></li>
                 </ul>
-                <a href="#" class="normal font-bold hover:font-bold">more...</a>
+                <a href="#" class="normal font-bold hover:font-bold">more...</a> -->
             </div>
         </div>
         <div class="w-full md:w-1/2 order-1 md:order-2">
-            <div class="max-w-md leading-loose tracking-tight">
-                <h1 class="font-bold my-12">Post Title</h1>
+            <div class="max-w-xl leading-loose tracking-tight">
+                <h1 class="font-bold my-12">Word Document Templates with Place-holders</h1>
 
-                <p class="mb-8">This template is inspired by the amazing <a href="https://minimalissimo.shop/product/minimalist-writer-ii" target="_blank">https://minimalissimo.shop/product/minimalist-writer-ii</a> created by <a href="https://manuelmoreale.com/">Manuel Moreale</a>.</p>
+                <hr />
+                <p class="mb-8">So you think it might be a good idea to use a word document with placeholder text that can be used with some application to create reports? By replacing those placeholders with real data?</p>
+                <p class="mb-8">Something like this?</p>
+                <pre class="p-4 my-4 bg-gray-800 text-gray-200 rounded-lg font-mono text-sm overflow-auto shadow-lg"><code>Date: [[DATE]]
+User: [[USERNAME]]
+                </code></pre>
+                <p class="mb-8">I would ask for your own sake, that you do not do that, and use something else. But if you are dead set on it, let me share my experience…</p>
+                <hr />
+                <h4 class="font-bold" id="what-is-a-docx">What is a docx?</h4>
+                <p class="mb-8">First,  what is a Microsoft <code>.docx</code> file? While you may be able to avoid some of the following complexities with a fancy library, if you are doing this from "scratch" then this section is vital.</p>
+                <p class="mb-8">A <code>docx</code> file basically a fancy zip file. In fact, you can take a look into one if you rename the file and change the extension to <code>.zip</code> instead of <code>.docx</code>. I've done this many times in my journey to debug and test. </p>
+                <blockquote>
+                  <p class="mb-8">Side note: you'd be suprised how many files out there are just renamed zip files…</p>
+                </blockquote>
+                <p class="mb-8">Here is a <code>docx</code> "sample" with it's extension renamed to <code>zip</code>.</p>
+                <img src="http://officeopenxml.com/images/zipFile1.gif">
+                <p class="mb-8"><a href="http://officeopenxml.com/anatomyofOOXML.php" target="_blank">Here</a> is a great resource on the inner workings of a docx from <a href="http://officeopenxml.com/" target="_blank">officeopenxml.com</a> by Daniel Dick.</p>
+                <p class="mb-8">The "heart" of a word document (at least one that is primarily text), will live in the <code>word/document.xml</code> file. This will be filled with hundreds of xml tags, the most important of which will be the body tag: <code>&lt;w:body&gt;</code> and the "paragraph" tags <code>&lt;w:p&gt;</code>. Paragraph's in word files are the basic blocks of content. They contain several other tags within them such as <code>&lt;w:pPr&gt;</code> which are the paragraph properties (the <code>xPr</code> notation is common across word tags), and the <code>&lt;w:r&gt;</code> tags which are "runs", basically another container for text elements. The <em>actual</em> text is stored in <code>&lt;w:t&gt;</code> tags. </p>
+                <p class="mb-8">Here's an example taken from the <a href="http://officeopenxml.com/WPcontentOverview.php" target="_blank">officeopenxml</a> site:</p>
+                <pre class="p-4 my-4 bg-gray-800 text-gray-200 rounded-lg font-mono text-sm overflow-auto shadow-lg"><code class="xml language-xml">&lt;w:p&gt;
+    &lt;w:pPr&gt;
+        &lt;w:jc w:val="center"&gt;
+    &lt;w:pPr&gt;
+    &lt;w:r&gt;
+        &lt;w:rPr&gt;
+            &lt;w:b/&gt;
+        &lt;/w:rPr&gt;
+        &lt;w:t&gt;This is text.&lt;/w:t&gt;
+    &lt;/w:r&gt;
+&lt;/w:p&gt;
+                </code></pre>
+                <p class="mb-8">This is a simple example of what a centered piece of text in word can look like in its xml form. I will hold off on explaining all the different tags, there are good references from the aforementioned website, and also plenty of other places. ChatGPT and other LLMs aren't bad for this as well as resources from Microsoft themselves.</p>
+                <hr />
+                <h4 class="font-bold" id="the-rsid-problem">The RSID problem</h4>
+                <p class="mb-8">One thing I chose to omit from the example is the dreaded <code>w:rsid</code> tags. These are tags that are enabled by default in almost every Microsoft Word version and are used for tracking editing sessions. These tags are one of the first major roadblocks you will face when it comes to parsing word documents. Your best bet is to just to detect these tags in code and implement a solution to detect the original placeholder text. The way I did it was to check for <code>rsid</code> tags within <code>w:r</code> elements and merge them to reform the placeholder text. More on that later…</p>
+                <p class="mb-8">You might think to yourself, "can't we just disable the tracking information in the documents". Technically yes. There is no setting to turn this off. There used to be in certain old versions of word (over 10 years ago?). I found a way to disable this for individual documents is to open up VBA (Microsoft Visual Basic for Applications) in Word and to write a Macro that auto-executes every time the document is opened. You can set <code>StoreRSIDOnSave = False</code>. Having this macro run will fix the problem. But when you want to distribute this document or have other people use the template code, then the problem resurfaces… </p>
+                <p class="mb-8">Microsoft Word has it's own concept of "templates" which are <code>dotm</code> files. By default every word document inherits the properities of a <code>dotm</code> file called "Normal.dotm". This file lives in your <code>AppData\Roaming\Microsoft\Templates</code>. A global solution to the one described in the previous paragraph, is to modify this file and attach the macro to it. This will have it auto-execute the macro for basically <em>every</em> word document. If you wanted to avoid this massive global change, you could create your own <code>.dotm</code> and set all your future "template" <code>docx</code>'s to inherit from this custom <code>.dotm</code>. Good luck convincing other user's to do this.</p>
+                <p class="mb-8">In my project, I used Qt and C++, so here was my solution to the problem:</p>
+                <pre class="p-4 my-4 bg-gray-800 text-gray-200 rounded-lg font-mono text-sm overflow-auto shadow-lg"><code class="C++ language-C++">QString mergeTaggedText(QDomElement&amp; startElement) {  
+    QString mergedText;  
+    QDomElement currentElement = startElement;  
+    int checkAfter = -1;  
 
-                <p class="mb-8">Lorem ipsum dolor sit amet, consectetur <a href="#">random link</a> adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Vel risus commodo viverra maecenas accumsan lacus vel facilisis volutpat. Vitae aliquet nec ullamcorper sit. Nullam eget felis eget nunc lobortis mattis aliquam. In est ante in nibh mauris. Egestas congue quisque egestas diam in. Facilisi nullam vehicula ipsum a arcu. Nec nam aliquam sem et tortor consequat. Eget mi proin sed libero enim sed faucibus turpis in. Hac habitasse platea dictumst quisque. In aliquam sem fringilla ut. Gravida rutrum quisque non tellus orci ac auctor augue mauris. Accumsan lacus vel facilisis volutpat est velit egestas dui id. At tempor commodo ullamcorper a. Volutpat commodo sed egestas egestas fringilla. Vitae congue eu consequat ac.</p>
+    while (!currentElement.isNull()) {  
+        QDomElement tElement = currentElement.firstChildElement("w:t");  
+        if (!tElement.isNull()) {  
+            mergedText += tElement.text();  
+            bool breakCondition = false;  
 
-                <p class="mb-8">Netus et malesuada fames ac turpis egestas sed. Sociis natoque penatibus et magnis dis. Pulvinar etiam non quam lacus suspendisse faucibus. Vulputate mi sit amet mauris commodo quis imperdiet massa tincidunt. Eget nullam non nisi est sit amet facilisis. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Vulputate mi sit amet mauris commodo quis. Vestibulum mattis ullamcorper velit sed ullamcorper morbi tincidunt. Feugiat pretium nibh ipsum consequat nisl vel pretium lectus quam. Enim blandit volutpat maecenas volutpat blandit. Scelerisque fermentum dui faucibus in ornare. Ultricies tristique nulla aliquet enim tortor at auctor urna nunc. Id interdum velit laoreet id. Ut lectus arcu bibendum at varius vel pharetra vel turpis.</p>
+            if (checkAfter == -1) {  
+                breakCondition = mergedText.contains("]]");  
+                if (breakCondition) {  
+                    checkAfter = mergedText.indexOf("]]") + 2;  
+                }  
+            }  
+            else {  
+                breakCondition = mergedText.mid(checkAfter).contains("]]");  
+            }  
 
-                <p class="mb-8">A diam sollicitudin tempor id eu. Lectus vestibulum mattis ullamcorper velit sed ullamcorper. Sit amet facilisis magna etiam tempor. Non diam phasellus vestibulum lorem sed risus. Leo vel fringilla est ullamcorper eget nulla facilisi etiam. Quam quisque id diam vel quam elementum pulvinar etiam. Eu volutpat odio facilisis mauris. Molestie ac feugiat sed lectus vestibulum mattis. In vitae turpis massa sed elementum tempus egestas sed sed. Sed id semper risus in hendrerit gravida rutrum quisque non. Quis lectus nulla at volutpat diam ut venenatis. Ultrices eros in cursus turpis massa tincidunt dui. Phasellus egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam. Lobortis mattis aliquam faucibus purus. Egestas sed tempus urna et pharetra pharetra. Tellus pellentesque eu tincidunt tortor aliquam nulla.</p>
+            if (breakCondition) {  
+                int endPos = mergedText.lastIndexOf("]]");  
+                int checkPos = mergedText.indexOf("[", endPos);  
+                if (checkPos == -1) {  
+                    break;  
+                }  
+                // We have been struck by lightning:  
+                // We found a starting tag after an ending tag... continue merging  
+                checkAfter = endPos + 2;  
+            }  
+        }  
+        currentElement = currentElement.nextSiblingElement("w:r");  
+    }  
+    return mergedText;  
+}
 
-                <p class="mb-8">Cras fermentum odio eu feugiat pretium nibh ipsum. Integer vitae justo eget magna fermentum iaculis eu non diam. Tellus molestie nunc non blandit massa enim nec dui. Ullamcorper morbi tincidunt ornare massa eget egestas. Orci a scelerisque purus semper eget duis at tellus at. Consequat id porta nibh venenatis cras sed. Enim eu turpis egestas pretium. Mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Dui vivamus arcu felis bibendum. Eu consequat ac felis donec et odio. Ultrices gravida dictum fusce ut placerat orci nulla. Leo urna molestie at elementum eu facilisis. Vulputate mi sit amet mauris commodo. Eu consequat ac felis donec et odio pellentesque.</p>
+void processElementToRemoveRsids(QDomElement&amp; element) {  
+    QDomElement child = element.firstChildElement();  
+    while (!child.isNull()) {  
+        QDomElement nextChild = child.nextSiblingElement();  
 
+        if (child.nodeName() == "w:r") {  
+            QDomElement tElement = child.firstChildElement("w:t");  
+            if (!tElement.isNull() &amp;&amp; tElement.text().contains("[")) {  
+                QString mergedText = mergeTaggedText(child);  
+
+                // We could add a check here to see if we contain at least 1 full tag, but merging  
+                // these RSID elements is low risk, and it's probably safe to even merge every 
+                // single one in the document anyway...  
+
+                // Create a new w:r element with merged text  
+                QDomElement newRElement = element.ownerDocument().createElement("w:r");  
+                QDomElement newRPrElement = child.firstChildElement("w:rPr").cloneNode().toElement();  
+                newRElement.appendChild(newRPrElement);  
+
+                QDomElement newTElement = element.ownerDocument().createElement("w:t");  
+                newTElement.appendChild(element.ownerDocument().createTextNode(mergedText));  
+                newRElement.appendChild(newTElement);  
+
+                // Replace the old elements with the new merged element  
+                element.insertBefore(newRElement, child);  
+
+                // Remove old elements - from start until we reach the last element we merged  
+                while (!child.isNull() &amp;&amp; !mergedText.endsWith(child.firstChildElement("w:t").text())) {  
+                    QDomElement toRemove = child;  
+                    child = child.nextSiblingElement("w:r");  
+                    element.removeChild(toRemove);  
+                }  
+                if (!child.isNull()) {  
+                    element.removeChild(child);  
+                }  
+                child = newRElement;  
+            }  
+        } else {  
+            processElementToRemoveRsids(child);  
+        }  
+        child = nextChild;  
+    }  
+}
+                </code></pre>
+                <p class="mb-8">My tags were in the form <code>[[TAG_NAME]]</code> so this logic specifically looks for the starting character <code>[</code>.  As you can see, it's not perfect, but it worked with every malformed <code>document.xml</code> I threw at it.</p>
+                <p class="mb-8">Including the following mess (with a tag of <code>[[ACCOUNT_NUM]]</code>):</p>
+                <pre class="p-4 my-4 bg-gray-800 text-gray-200 rounded-lg font-mono text-sm overflow-auto shadow-lg"><code class="xml language-xml">&lt;w:r&gt;
+    &lt;w:rPr&gt;
+        &lt;w:noProof/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;Account: [[ACC&lt;/w:t&gt;
+&lt;/w:r&gt;
+&lt;w:r w:rsidR="00DD06FC"&gt;
+    &lt;w:rPr&gt;
+        &lt;w: noProof/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;O&lt;/w:t&gt;
+&lt;/w:r&gt;
+&lt;w:r&gt;
+    &lt;w:rPr&gt;
+        &lt;w:noProof/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;UNT_N&lt;/w:t&gt;
+&lt;/w:r&gt;
+&lt;w:r w:rsidR="00702A9D"&gt;
+    &lt;w:rPr&gt;
+        &lt;w:noProof/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;UM]&lt;/w:t&gt;
+&lt;/w:r
+&lt;w:r&gt;
+    &lt;w:rPr&gt;
+        &lt;w:noProof/&gt;
+    &lt;/w:rPr&gt;
+    &lt;w:t&gt;]&lt;/w:t&gt;
+&lt;/w:r&gt;
+                </code></pre>
+                <p class="mb-8">The special case in the <code>mergeTaggedText</code> function even protects against the following scenario:</p>
+                <pre class="p-4 my-4 bg-gray-800 text-gray-200 rounded-lg font-mono text-sm overflow-auto shadow-lg"><code class="xml language-xml">&lt;w:t&gt;]] [&lt;/w:t&gt;
+                </code></pre>
+                <p class="mb-8">i.e. when a tag begins in the same <code >&lt;w:r&gt;</code> as the closing tag appears in.</p>
+                <p class="mb-8">If you find a better solution (ideally something that doesn't even require code) please share. There are dozens of us out there struggling with this issue.</p>
+                <h2 id="img-srchttpsmedia0giphycommediav1y2lkptc5mgi3njexoddqbgzta3nwothsnng1yxbiczhqa3j4eddtbtl6n3nna3g0mdizbyzlcd12mv9pbnrlcm5hbf9nawzfynlfawqmy3q9zwksljtvrqxdykkgiphywebp-"><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExODdqbGZta3NwOThsNng1YXBiczhqa3J4eDdtbTl6N3Nna3g0MDIzbyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/kSlJtVrqxDYKk/giphy.webp" /></h2>
+                <hr />
+                <h4 class="font-bold" id="other-useful-tips">Other useful tips</h4>
+                <p class="mb-8">Another thing you might want to do with your template file is to insert images into it. This is different than replacing text or just going through the <code>document.xml</code> file. This is because of the anatomy of the <code>docx</code> file again. Images live in the <code>word/media</code> folder in the <code>docx</code> structure. So in order to actually insert an image you would have to:</p>
+                <ol>
+                <li>1. Add the image file into the <code>word/media</code> directory</li>
+                <br>
+                <li>2. Add a relationship entry into the <code>document.xml.rels</code> file in the <code>word/rels</code> folder. "Rels", or Relationships, are files that map connections between different parts of the document. This includes things like images and styles. Here's what a rel tag might look like for adding an <code>image1</code> to your document:</li>
+                </ol>
+                <pre class="p-4 my-4 bg-gray-800 text-gray-200 rounded-lg font-mono text-sm overflow-auto shadow-lg"><code class="xml language-xml">&lt;Relationship Id="rId7" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/image1.png"/&gt;
+                </code></pre>
+                <ol start="3">
+                <li>3. Insert the relationship id into the main <code>document.xml</code> to actually have it appear. This isn't as simple as just a tag with the id in it, you need specific tags and xml name spaces surrounding it… <a href="http://www.officeopenxml.com/drwOverview.php" target="_blank">here's</a> a link from our favorite resource that dives into it a bit more. Basically you can find example xml of an existing image in a word document and replace the id with your id and it should work… at least it has for me.</li>
+                </ol>
+                <br>
+                <p class="mb-8">Another special case is the headers and footers. These files live separately from <code>document.xml</code>, and in fact in their own xml files: <code>headerN.xml</code> and <code>footerN.xml</code>. The <code>N</code> is a number. You can modify text in your headers and footers by modifying the text in these <code>header</code> and <code>footer</code> xml files.</p>
+                <hr />
+                <h3 class="font-bold" id="final-thoughts">Final thoughts:</h3>
+                <p class="mb-8">Despite my facetious comments at the start of this article, using word documents as templates isn't a huge deal once you wrap your head around how a word document actually works. Of course some things that end up being huge pains in the butt (RSIDs, looking at you), really should have better support on Microsoft's end. While there could easily be a third party tool out there that strips these annoying things out of your documents, it would be nice to just be able to turn them off within word. But I find myself being upset about lots of seemingly inane things that Microsoft does with Office and Windows these days.</p>
             </div>
         </div>
 
@@ -114,10 +280,8 @@
                 <p class="font-bold my-4 md:my-12">Contact Me</p>
 
                 <ul class="flex flex-wrap justify-between flex-row md:flex-col">
-                    <li><a href="#" class="nav mx-2 md:mx-0">Twitter</a></li>
-                    <li><a href="#" class="nav mx-2 md:mx-0">Instagram</a></li>
-                    <li><a href="#" class="nav mx-2 md:mx-0">Dribbble</a></li>
-                    <li><a href="#" class="nav mx-2 md:mx-0">etc</a></li>
+                    <li><a href="mailto:dimitarpendurkov@gmail.com" class="nav mx-2 md:mx-0">Email</a></li>
+                    <li><a href="https://www.linkedin.com/in/dimitarpendurkov/" target="_blank" class="nav mx-2 md:mx-0">LinkedIn</a></li>
                 </ul>
             </div>
         </div>
@@ -125,7 +289,8 @@
             <div class="max-w-md leading-loose tracking-tight">
                 <p class="font-bold my-4 md:my-12">About Me</p>
 
-                <p class="mb-8">Arcu risus quis varius quam quisque id diam vel. Consectetur adipiscing elit ut aliquam purus sit amet. Nibh tortor id aliquet lectus proin nibh. </p>
+                <p class="mb-8">Hi, I'm Dimitar. I graduated from UIUC with my B.S in Computer Science in 2022. I work full-time as a software engineer. My interests in the field are all over the place, ranging from cyber security, efficient programming, operating systems, to database systems and more. I find most CS topics interesting to talk about and wish I had all the time and energy to explore them all deeply.</p>
+                <p class="mb-8">Outside of tech, I like biking, boxing, video games (waay too much Skyrim), and writing (hence this blog!)</p>
             </div>
         </div>
 
