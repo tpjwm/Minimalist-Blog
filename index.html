@@ -111,7 +111,7 @@ User: [[USERNAME]]
                   <p class="mb-8">Side note: you'd be suprised how many files out there are just renamed zip files…</p>
                 </blockquote>
                 <p class="mb-8">Here is a <code>docx</code> "sample" with it's extension renamed to <code>zip</code>.</p>
-                <img src="http://officeopenxml.com/images/zipFile1.gif">
+                <img src="https://i.imgur.com/jMQ74KA.png">
                 <p class="mb-8"><a href="http://officeopenxml.com/anatomyofOOXML.php" target="_blank">Here</a> is a great resource on the inner workings of a docx from <a href="http://officeopenxml.com/" target="_blank">officeopenxml.com</a> by Daniel Dick.</p>
                 <p class="mb-8">The "heart" of a word document (at least one that is primarily text), will live in the <code>word/document.xml</code> file. This will be filled with hundreds of xml tags, the most important of which will be the body tag: <code>&lt;w:body&gt;</code> and the "paragraph" tags <code>&lt;w:p&gt;</code>. Paragraph's in word files are the basic blocks of content. They contain several other tags within them such as <code>&lt;w:pPr&gt;</code> which are the paragraph properties (the <code>xPr</code> notation is common across word tags), and the <code>&lt;w:r&gt;</code> tags which are "runs", basically another container for text elements. The <em>actual</em> text is stored in <code>&lt;w:t&gt;</code> tags. </p>
                 <p class="mb-8">Here's an example taken from the <a href="http://officeopenxml.com/WPcontentOverview.php" target="_blank">officeopenxml</a> site:</p>
